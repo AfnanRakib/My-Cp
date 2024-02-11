@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+void lineiss(){
+    string s;
+    getline(cin,s);
+    istringstream is(s);
+    int x,y;
+    string a,b;
+    is>>a>>x>>b>>y;
+    cout<<a<<endl;
+    cout<<x<<endl;
+    cout<<b<<endl;
+    cout<<y<<endl;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>lineiss</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

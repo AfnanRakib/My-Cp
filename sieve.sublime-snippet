@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[
+long long N=1e7+10;
+vector<bool> mark(N);
+vector<long long> prime;
+vector<long long> nonprime;
+void sieve(){//O(n*log(log(N)))
+    nonprime.push_back(0);
+    nonprime.push_back(1);
+    for(long long i=4; i<N; i+=2){
+        mark[i]=true;
+        nonprime.push_back(i);
+    }
+    prime.push_back(2);
+    for(long long i=3; i<N; i++){
+        if(mark[i])
+            continue;
+        prime.push_back(i);
+        for(long long j=i*i; j<N; j+=i+i){
+            mark[j]=true;
+            nonprime.push_back(j);
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

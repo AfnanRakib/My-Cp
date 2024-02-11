@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+vector<long long> segmented_sieve(long long L,long long R){// 1<=(L,R)<=1e12 and L-R<=1e6
+  //need to pre compute all prime till 1e6 or sqrt(R) using sieve
+  if(L==1)
+    L++;
+  vector<long long> seg_prime;
+  vector<bool> seg_mark(R-L+1,false); 
+  for(auto pr : prime){
+    long long j=1LL*pr*pr;
+    if(j>R)
+      break;
+    if(j<L)
+      j=((L+pr-1)/pr)*1LL*pr;
+    while(j<=R){
+      seg_mark[j-L]=true;
+      j+=pr;
+    }
+  }
+  for(long long i=L; i<=R; i++){
+    if(seg_mark[i-L]==false)
+      seg_prime.pb(i);
+  }
+  return seg_prime;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>segmented sieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
