@@ -1,9 +1,0 @@
-{
-	"remember_layout":true,
-	"create_window_at_startup":false,
-	"hot_exit":true,
-	"remember_open_files":true,
-	"theme":"Default Dark.sublime-theme",
-	"color_scheme":"Monokai.sublime-color-scheme",
-	"font_size": 16,
-}
