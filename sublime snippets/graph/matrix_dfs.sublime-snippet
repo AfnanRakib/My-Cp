@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+void dfs(vector<vector<int>>& grid, int sr, int sc, int n, int m,vector<vector<int>>& vis){
+    if(sr>=n || sc>=m || sr<0 || sc<0)
+        return;
+    if(vis[sr][sc]==1 || grid[sr][sc]==0)
+        return;  
+    vis[sr][sc]=1;
+
+    dfs(grid,sr-1,sc,n,m,vis);
+    dfs(grid,sr+1,sc,n,m,vis);
+    dfs(grid,sr,sc-1,n,m,vis);
+    dfs(grid,sr,sc+1,n,m,vis);
+}
+
+int matrix_DFS(vector<vector<int>>& grid){
+    int n=grid.size();
+    int m=grid[0].size();
+    vector<vector<int>> vis(n,vector<int> (m,0));
+    int i=0,j=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(grid[i][j]==1 && vis[i][j]==0){
+                dfs(grid,i,j,n,m,vis);
+            }
+        }
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>matrix_dfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

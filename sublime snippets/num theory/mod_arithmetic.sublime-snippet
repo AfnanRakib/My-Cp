@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[
+#define lcm(a,b)    (a*b)/__gcd(a,b)
+//doesnt matter if a>b or a<b
+ll egcd(ll a,ll b){
+    if(b==0) return a;
+    return egcd(b,a%b);
+}
+//if a,b,mod<=1e9
+//if b<=1e18 then use ETF [binExp(a,binExp(b,c,mod-1),mod) here,b=b^c]
+//if a<=1e18 then use a=a%mod initially
+//if mod<=1e18 then use largeBinExp with binMul
+ll binExp(ll a,ll b,ll mod){//O(logn)
+    //a%=mod
+    ll ans=1;
+    while(b>0){
+        if(b&1)
+            ans=(ans*a)%mod;
+        a=(a*a)%mod;
+        b=b>>1;
+    }
+    return ans;
+}
+ll modAdd(ll a, ll b, ll m){return ((a % m) + (b % m)) % m;}
+ll modSub(ll a, ll b, ll m){return ((a % m) - (b % m) + m) % m;} 
+ll modMul(ll a, ll b, ll m){return ((a % m) * (b % m)) % m;}
+ll modDiv(ll a, ll b, ll m){return ((a % m) * binExp(b,m-2,m)) % m;}
+//if a,b,mod<=1e9
+ll binExpRec(ll a,ll b,ll mod){//O(logn)
+    //a%=mod   //if a<=1e18
+    if(b == 0)
+        return 1;
+    ll y=binExpRec(a,b/2,mod);
+    if(b%2 == 0)
+        return (y*y) % mod;
+    else
+        return (a*(y*y) % mod) % mod;
+}
+//if mod<=1e9 and a,b<=1e18 (bcz ll > 2*1e18)
+ll binMul(ll a,ll b,ll mod){//O(logn)
+    ll ans=0;
+    while(b>0){
+        if(b&1)
+            ans=(ans+a)%mod;
+        a=(a+a)%mod;
+        b=b>>1;
+    }
+    return ans;
+}
+//if a,mod<=1e18 and b<=1e9
+ll largeBinExp(ll a,ll b,ll mod){//O(log^2(n))
+    ll ans=1;
+    while(b>0){
+        if(b&1)
+            ans=binMul(ans,a,mod)%mod;
+        a=binMul(a,a,mod)%mod;
+        b=b>>1;
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>mod_arithmetic</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
