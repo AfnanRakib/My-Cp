@@ -8,7 +8,7 @@
 #define CLR_MSB(n,i) ((n) & (1LL << ((i)-1))-1)//upto i+1 pos
 #define CLR_LSB(n,i) ((n) & ~((1LL << (i))-1))//ipto i pos
 int firstSetMSB(int n){
-    return 32-(__builtin_clz(n));//32 for int, 64 for ll
+    return 32-(__builtin_clz(n));//32 for int, 64 for ll and clzll
 }  
 int firstSetLSB(int n){
     return log2(n & -n)+1;

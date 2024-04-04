@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+set<long long> factors(long long n){//O(sqrt(N)))
+    set<long long> facts;
+    facts.insert(1);
+    facts.insert(n);
+    for(long long i=1; i*i<=n; i++){
+        if(n%i==0){
+            facts.insert(i);
+            facts.insert(n/i);
+        }
+    }
+    return facts;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>factors</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
