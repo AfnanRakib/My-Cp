@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<int>> pre(100, vector<int>(100, -1));
+vector<vector<int>> dist(100, vector<int>(100, INF));
+
+void go(int src,int dest){
+    if (src==dest)
+        cout<<src<<" ";
+    else if (pre[src][dest]==-1)
+        cout<<"There is no path from "<< src <<"->"<<dest<< endl;
+    else{
+        go(src, pre[src][dest]);
+        cout<<dest<<" ";
+    }
+}
+void floyd_warshell(int n){
+    for (int i=1;i<=n;++i){
+        dist[i][i]=0;
+    }
+    for (int k = 1; k <= n; k++){
+        for (int i = 1; i <= n; i++){
+            for (int j = 1; j <= n; j++){
+                if(dist[i][k]==INF && dist[j][k]==INF) continue;
+                if (dist[i][j] > dist[i][k] + dist[k][j]){
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                    pre[i][j] = pre[k][j];
+                }
+            }
+        }
+    }
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>floyd_warshell</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

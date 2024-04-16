@@ -1,0 +1,50 @@
+<snippet>
+	<content><![CDATA[
+const int N=1e5+10;
+int parent[N],sizes[N];
+
+void make_set(int v) {
+    parent[v] = v;
+    sizes[v] = 1;
+}
+
+int find_set(int v) {
+    if (v == parent[v])
+        return v;
+    return parent[v] = find_set(parent[v]);//path compression
+}
+
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b) {
+        if (sizes[a] < sizes[b])//union by size
+            swap(a, b);
+        parent[b] = a;
+        sizes[a] += sizes[b];
+    }
+}
+
+void dsu(int n,int q){
+    for(int i=1;i<=n;i++)
+        make_set(i);
+
+    while(q--){
+        int a,b;
+        cin>>a>>b;
+        union_sets(a,b);
+    }
+
+    int components=0;
+    for(int i=1;i<=n;i++){
+        if(find_set(i)==i)
+            components++;
+    }
+    cout<<components<<endl;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dsu</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
