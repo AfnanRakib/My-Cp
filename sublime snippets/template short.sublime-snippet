@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[
+#include<bits/stdc++.h>
+using namespace std;
+#define M        1000000007
+#define INF      1e18+9
+#define PI       acos(-1.0)
+#define ll       long long int
+#define ull      unsigned long long int
+#define all(x)   (x).begin(), (x).end()
+#define pb       push_back
+#define tc         \
+        int tcase,tno; \
+        cin >> tcase;  \
+        for(tno=1;tno<=tcase;tno++)
+#define pcn         cout<<"Case "<<tno<<":"<<endl;
+#define ff(i,n)     for(ll i=0;i<n;i++)
+
+
+int main(){
+    ios_base:: sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+    
+    return 0;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>template short</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
