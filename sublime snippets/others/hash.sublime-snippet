@@ -99,7 +99,7 @@ hs.merge_hash(0,i-1,i,n-1);     get & merge hash of teo sub string
 */
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>string dbl hash</tabTrigger>
+	<tabTrigger>hash</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.c++</scope>
 </snippet>

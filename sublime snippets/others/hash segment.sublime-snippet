@@ -1,0 +1,245 @@
+<snippet>
+	<content><![CDATA[
+#include<bits/stdc++.h>
+using namespace std;
+#define M        1000000007
+#define INF      1e18+9
+#define PI       acos(-1.0)
+#define ll       long long
+#define ull      unsigned long long
+#define sp       ' '
+#define all(x)   (x).begin(), (x).end()
+#define pb       push_back
+#define CY       cout<<"Yes\n";
+#define CN       cout<<"No\n";
+#define tc         \
+        int tcase,tno; \
+        cin >> tcase;  \
+        for(tno=1;tno<=tcase;tno++)
+#define pcn         cout<<"Case "<<tno<<":"<<endl;
+#define ff(i,n)     for(ll i=0;i<n;i++)
+#define ff1(i,n)    for(ll i=1;i<=n;i++)
+
+//--------------------------------const----------------------------
+#define pll      pair<ll,ll>
+const int N = 1e6+10;
+const ll MOD[2] = {998244353, 1000000007};
+ll BASE[2] = {0, 0};
+ll POW[2][N];
+ll IPOW[2][N];
+vector<pair<pll,pll>> tree(4*N+1);
+//---------------------------------HASH------------------------------
+
+ll power(ll a, ll p, ll m) {
+  ll ans = 1;
+  a %= m;
+  while (p) {
+    if (p & 1ll)
+        ans = (ans*a) % m;
+    p >>= 1ll;
+    a = (a*a) % m;
+  }
+  return ans;
+}
+ 
+void hash_pre() {
+  ll b1, b2, i, j, inv;
+  mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
+  b1 = (500 + (rnd() % (MOD[0]-500*2+1)));
+  b2 = 0;
+  do {
+    b2 = (500 + (rnd() % (MOD[1]-500*2+1)));
+  } while (b1 == b2);
+  BASE[0] = b1;
+  BASE[1] = b2; 
+  for (i = 0; i < 2; ++i) {
+    ll *pw = POW[i], *ipw = IPOW[i], x = BASE[i], m = MOD[i];
+    pw[0] = 1;
+    ipw[0] = 1;
+    inv = power(x, m-2, m);
+    for (j = 1; j < N; ++j) {
+      pw[j] = (pw[j-1] * x) % m;
+      ipw[j] = (ipw[j-1] * inv) % m;
+    }
+  }
+}
+ 
+template<typename T>
+struct DoubleHash {
+  int n;
+  T s;
+  vector<pll> h;
+  DoubleHash() {}
+  DoubleHash(T s) : s(s) {
+    n = s.size();
+    h.resize(n+1);
+    ll *pw0 = POW[0], m0 = MOD[0];
+    ll *pw1 = POW[1], m1 = MOD[1];
+    int i = 0;
+    h[i] = {0, 0};
+    for (i = 1; i <= n; ++i) {
+      h[i] = {
+        (h[i-1].first + (s[i-1] * pw0[i]) % m0) % m0,
+        (h[i-1].second + (s[i-1] * pw1[i]) % m1) % m1,
+      };
+    }
+  }
+ 
+  pair<ll,ll> get_hash(int l, int r) {
+    assert((0 <= l) && (l <= r) && (r < n));
+    ++l; ++r;
+    ll *ipw0 = IPOW[0], m0 = MOD[0];
+    ll *ipw1 = IPOW[1], m1 = MOD[1];
+    return {
+      ((h[r].first - h[l-1].first + m0) * ipw0[l]) % m0,
+      ((h[r].second - h[l-1].second + m1) * ipw1[l]) % m1,
+    };
+  }
+ 
+  pll get_hash() {
+    return get_hash(0, n-1);
+  }
+ 
+  pll merge_hash(int l1, int r1, int l2, int r2) {
+    assert((0 <= l1) && (l1 <= r1) && (r1 < l2) && (l2 <= r2) && (r2 < n));
+    pll p1 = get_hash(l1, r1);
+    pll p2 = get_hash(l2, r2);
+    ll *pw0 = POW[0], m0 = MOD[0];
+    ll *pw1 = POW[1], m1 = MOD[1];
+    int len = r1-l1+1;
+    return {
+      (p1.first + (p2.first * pw0[len]) % m0) % m0,
+      (p1.second + (p2.second * pw1[len]) % m1) % m1,
+    };
+  }
+};
+/*
+hash_pre();                     use it to calculate powers
+DoubleHash<string> hs(s);       pre compute hash of full string
+hs.get_hash(0,i-1);             get hash of a sub string
+hs.merge_hash(0,i-1,i,n-1);     get & merge hash of teo sub string
+*/
+//-------------------------------Segment tree---------------------------------
+/*
+a and ra are string and reverse of string
+build(1,1,n,a,ra) at node 1 build the tree from 1 to n
+query(1,1,n,x,y) at node 1 query in x to y range for 1 to n array
+update(1,1,n,x,y,up,a,ra) at node 1 update x to y range for 1 to n array if up=true update r else ra
+merge_node(a,b) adds pair a and b by modding;
+everything o(4*logN)
+*/
+
+pair<pll,pll> merge_node(pair<pll,pll> a,pair<pll,pll> b){
+  ll *pw0 = POW[0], *ipw0 = IPOW[0], m0 = MOD[0];
+  ll *pw1 = POW[1], *ipw1 = IPOW[1], m1 = MOD[1];
+  return {
+    {(a.first.first+b.first.first)%m0,(a.first.second+b.first.second)%m1},
+    {(a.second.first+b.second.first)%m0,(a.second.second+b.second.second)%m1}
+  };
+}
+
+void build(int node,int b,int e,string &a,string &ra)//node,begin,end
+{
+  ll *pw0 = POW[0], *ipw0 = IPOW[0], m0 = MOD[0];
+  ll *pw1 = POW[1], *ipw1 = IPOW[1], m1 = MOD[1];
+  if(b==e){
+    tree[node].first={1ll*a[b]*pw0[b] % m0,1ll*a[b]*pw1[b] % m1};
+    tree[node].second={1ll*ra[b]*pw0[b] % m0,1ll*ra[b]*pw1[b] % m1};
+    return;
+  }
+  int left=node*2;
+  int right=node*2+1;
+  int mid=(b+e)/2;
+  build(left,b,mid,a,ra);
+  build(right,mid+1,e,a,ra);
+  tree[node]=merge_node(tree[left],tree[right]);//change accordingly
+}
+pair<pll,pll> query(int node,int b,int e,int i,int j)//node,begin,end,range of query(i,j)
+{
+  if(i>e || j<b)
+      return {{0,0},{0,0}};//return something that doesnt effect the result
+  if(b>=i && e<=j)
+      return tree[node];
+  int left=node*2;
+  int right=node*2+1;
+  int mid=(b+e)/2;
+  pair<pll,pll> p1=query(left,b,mid,i,j);
+  pair<pll,pll> p2=query(right,mid+1,e,i,j);
+  return merge_node(p1,p2);//change accordingly
+}
+void update(int node,int b,int e,int i,int j,bool up,string &a,string &ra)//node,begin,end,updating(position,value)
+{
+  ll *pw0 = POW[0], *ipw0 = IPOW[0], m0 = MOD[0];
+  ll *pw1 = POW[1], *ipw1 = IPOW[1], m1 = MOD[1];
+  if(i>e || j<b)
+      return;
+  if(b==e){
+    if(up){
+      tree[node].first.first=(1ll*a[b]*pw0[b]) % m0;
+      tree[node].first.second=(1ll*a[b]*pw1[b]) % m1;
+    }else{
+      tree[node].second.first=(1ll*ra[b]*pw0[b]) % m0;
+      tree[node].second.second=(1ll*ra[b]*pw1[b]) % m1;
+    }
+    return;
+  }
+  int left=node*2;
+  int right=node*2+1;
+  int mid=(b+e)/2;
+  update(left,b,mid,i,j,up,a,ra);
+  update(right,mid+1,e,i,j,up,a,ra);
+  tree[node]=merge_node(tree[left],tree[right]);//change accordingly
+}
+
+int main() {
+  ios_base:: sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+  hash_pre();
+  int n,q;
+  cin>>n>>q;
+  string s,a,ra;
+  cin>>s;
+  a=s;
+  reverse(all(s));
+  ra=s;
+  //cout<<a<<endl<<ra<<endl;
+  build(1,0,n-1,a,ra);
+  while(q--){
+    int t;
+    cin>>t;
+    if(t==1){
+      int pos;
+      char c;
+      cin>>pos>>c;
+      pos--;
+      a[pos]=c;
+      ra[n-1-pos]=c;
+      update(1,0,n-1,pos,pos,true,a,ra);
+      update(1,0,n-1,n-1-pos,n-1-pos,false,a,ra);
+    }else{
+      int l,r;
+      cin>>l>>r;
+      l--,r--;
+      pair<pll,pll> ans=query(1,0,n-1,l,r);
+      pair<pll,pll> rans=query(1,0,n-1,n-1-r,n-1-l);
+      ll *pw0 = POW[0], *ipw0 = IPOW[0], m0 = MOD[0];
+      ll *pw1 = POW[1], *ipw1 = IPOW[1], m1 = MOD[1];
+
+      ans.first={(1ll*ans.first.first*ipw0[l]) % m0,(1ll*ans.first.second*ipw1[l]) % m1};
+      rans.second={(1ll*rans.second.first*ipw0[n-1-r]) % m0,(1ll*rans.second.second*ipw1[n-1-r]) % m1};
+
+      if(ans.first==rans.second)
+        cout<<"Yes"<<endl;
+      else
+        cout<<"No"<<endl;
+    }
+  }
+  return 0;
+}
+
+//https://cses.fi/problemset/task/2420
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>hash segment</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
