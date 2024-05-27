@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[
+// The problem was of stack overflow, local machines do not allow much stack memory But do not worry about it for online judge
+const int nmax = 100+5; //max row or col size
+const long long int mod = 1e9+7;
+/*
+Create matrix: Matrix F0(2,1);  F0.val[0][0] = 0,   F0.val[1][0] = 1;
+Print matrix: M.print();
+multiplicatiopn: Fn = M * F0;
+exponentiation: M = Matexpo(M, n);
+*/
+struct Matrix{
+    // after constructing val contains garbage
+    long long int val[nmax][nmax];
+    int row, col;
+    Matrix(int _r, int _c){
+        row = _r;
+        col = _c;
+        /* memset */
+        for(int i = 0; i<row; i++)
+            for(int j = 0; j<col; j++)
+                val[i][j] = 0;
+    }
+    Matrix operator*(Matrix other){
+        Matrix result(row, other.col); // O(nmax*nmax)
+        for(int i = 0; i<row; i++){
+            for(int j = 0; j<other.col; j++){
+                for(int k = 0; k<col; k++){
+                    result.val[i][j] += val[i][k] * other.val[k][j];
+                    result.val[i][j] %= mod;
+                }
+            }
+        }
+        // O(row * col * other.col)
+        return result;
+    }
+    void print(){
+        for(int i = 0; i<row; i++){
+            for(int j = 0; j<col; j++){
+                cout<<val[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+};
+// 1)if n=0 return In, 2)if n=even return (X^n/2)^2, 3)if n=odd return X*(X^n/2)^2
+Matrix Matexpo(Matrix X, long long int n){// X^n
+    Matrix Y(X.row, X.col);
+    if(n == 0){
+        for(int i = 0; i<X.row; i++)
+            Y.val[i][i] = 1;
+        return Y;
+    }
+    Y = Matexpo(X, n/2);
+    Y = Y * Y;
+    if(n % 2 == 1){
+        Y = Y * X;
+    }
+    return Y;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>matrix expo</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

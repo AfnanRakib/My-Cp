@@ -1,7 +1,6 @@
 <snippet>
 	<content><![CDATA[
-#define N 10000007
-#define rep(i,n) for(int i=1;i<=n;i++)
+const int N=1e5+7;
 //build(1,1,n)  build the tree from 1 to n
 //query(1,1,n,a,b)  query in a to b range for 1 to n array
 //update(1,1,n,x,v) update xth node with value v for 1 to n array
