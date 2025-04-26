@@ -71,9 +71,6 @@
 "SOHOJOGIˮ is a one-stop service provider platform for daily household tasks.
 It connects users with skilled professionals like plumbers, electricians, mechanics, and appliance repair experts, making it easy to find and hire reliable help.
 
-## 📊 Trello Board
-[SOHOJOGI Trello Board](https://trello.com/b/qnQoFcjw/sohojogi)
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -108,7 +105,6 @@ flutter doctor
 | **Architecture Pattern** | MVVM (Model-View-ViewModel) |
 | **State Management** | Provider |
 | **Remote Database** | Supabase |
-| **Local Storage** | File System (for profile images) |
 | **Authentication** | Supabase Auth |
 | **UI Framework** | Flutter Material Design |
 | **Language** | Dart |
@@ -122,10 +118,11 @@ The structure follows clean architecture principles with:
 - `lib/`: Main source code
   - `base/`: Core services and utilities
   - `constants/`: App-wide constants
-  - `data/`: Data layer (models, repositories)
+  - `data/`: Data layer
   - `screens/`: Feature modules following MVVM
   - `utils/`: Helper functions and utilities
 - `test/`: Test files
+- `assets/`: Static resources
 
 ## 💾 Database Schema
 
@@ -385,18 +382,51 @@ erDiagram
     }
 ```
 
-## 📚 Resources
-- [Dev Log](resources/DevLog.md)
-- [Project Wireframe](https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/blob/resources-setup/resources/Wireframe%200.pdf)
-- [UI/UX Design](https://www.figma.com/proto/WzVr7zvjiAiGrVoSkEglZE/Sohojogi-App-UI?node-id=125-186&starting-point-node-id=125%3A186&t=BygQA84Hiw98dmrB-1)
+## 📚 Project Resources
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <a href="resources/pitch-deck.pdf">
+          <img src="https://img.shields.io/badge/Pitch%20Deck-FF4500?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white" alt="Pitch Deck" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://trello.com/b/qnQoFcjw/sohojogi">
+          <img src="https://img.shields.io/badge/Trello%20Board-0052CC?style=for-the-badge&logo=trello&logoColor=white" alt="Trello Board" />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="resources/DevLog.md">
+          <img src="https://img.shields.io/badge/Dev%20Log-22ADF6?style=for-the-badge&logo=markdown&logoColor=white" alt="Dev Log" />
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/blob/resources-setup/resources/Wireframe%200.pdf">
+          <img src="https://img.shields.io/badge/Wireframe-4B0082?style=for-the-badge&logo=figma&logoColor=white" alt="Wireframe" />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <a href="https://www.figma.com/proto/WzVr7zvjiAiGrVoSkEglZE/Sohojogi-App-UI?node-id=125-186&starting-point-node-id=125%3A186&t=BygQA84Hiw98dmrB-1">
+          <img src="https://img.shields.io/badge/UI%2FUX%20Design-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="UI/UX Design" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## 👥 Team
 
 | Role | Name |
 |------|------|
 | **Team Leader** | Afnan Rakib |
-| **Team Member** | Rajiun Nabi |
 | **Team Member** | Md. Rubayet Islam |
+| **Team Member** | Rajiun Nabi |
 | **Mentor** | Shahriar Rahman Shaon |
 
 ## 📄 License
