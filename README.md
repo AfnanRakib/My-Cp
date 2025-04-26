@@ -4,66 +4,66 @@
   <h1>SOHOJOGI</h1>
   
   <p>
-    An One Stop Home Service Solutions
+    One Stop Home Service Solutions
   </p>
-  
+
 <!-- Badges -->
 <p>
   <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/Learnathon-By-Geeky-Solutions/team-synergy" alt="contributors" />
+    <img src="https://img.shields.io/github/contributors/Learnathon-By-Geeky-Solutions/team-synergy?style=for-the-badge" alt="Contributors" />
   </a>
-  <a href="">
-    <img src="https://img.shields.io/github/last-commit/Learnathon-By-Geeky-Solutions/team-synergy" alt="last update" />
+  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/commits">
+    <img src="https://img.shields.io/github/last-commit/Learnathon-By-Geeky-Solutions/team-synergy?style=for-the-badge" alt="Last Commit" />
   </a>
   <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/network/members">
-    <img src="https://img.shields.io/github/forks/Learnathon-By-Geeky-Solutions/team-synergy" alt="forks" />
+    <img src="https://img.shields.io/github/forks/Learnathon-By-Geeky-Solutions/team-synergy?style=for-the-badge" alt="Forks" />
   </a>
   <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/stargazers">
-    <img src="https://img.shields.io/github/stars/Learnathon-By-Geeky-Solutions/team-synergy" alt="stars" />
+    <img src="https://img.shields.io/github/stars/Learnathon-By-Geeky-Solutions/team-synergy?style=for-the-badge" alt="Stars" />
   </a>
-  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/issues/">
-    <img src="https://img.shields.io/github/issues/Learnathon-By-Geeky-Solutions/team-synergy" alt="open issues" />
+  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/issues">
+    <img src="https://img.shields.io/github/issues/Learnathon-By-Geeky-Solutions/team-synergy?style=for-the-badge" alt="Open Issues" />
   </a>
   <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license" />
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License" />
   </a>
 </p>
 
-<!-- SonarCloud Quality Badges -->
+<!-- SonarCloud Badges -->
 <p>
   <a href="https://sonarcloud.io/dashboard?id=Learnathon-By-Geeky-Solutions_team-synergy">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=alert_status&style=for-the-badge" alt="Quality Gate" />
   </a>
 </p>
-
 <p>
   <a href="https://sonarcloud.io/component_measures/domain/Vulnerability?id=Learnathon-By-Geeky-Solutions_team-synergy">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=vulnerabilities" alt="Vulnerabilities" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=vulnerabilities&style=for-the-badge" alt="Vulnerabilities" />
   </a>
-  <a href="https://sonarcloud.io/component_measures/domain/Bugs?id=LLearnathon-By-Geeky-Solutions_team-synergy">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=bugs" alt="Bugs" />
+  <a href="https://sonarcloud.io/component_measures/domain/Bugs?id=Learnathon-By-Geeky-Solutions_team-synergy">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=bugs&style=for-the-badge" alt="Bugs" />
   </a>
-  <a href="https://sonarcloud.io/component_measures/domain/Security?id=LLearnathon-By-Geeky-Solutions_team-synergy">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=security_rating" alt="Security" />
+  <a href="https://sonarcloud.io/component_measures/domain/Security?id=Learnathon-By-Geeky-Solutions_team-synergy">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=security_rating&style=for-the-badge" alt="Security Rating" />
   </a>
   <a href="https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=Learnathon-By-Geeky-Solutions_team-synergy">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=reliability_rating" alt="Reliability" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=reliability_rating&style=for-the-badge" alt="Reliability Rating" />
   </a>
   <a href="https://sonarcloud.io/component_measures/metric/code_smells/list?id=Learnathon-By-Geeky-Solutions_team-synergy">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=code_smells" alt="Code Smells" />
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=Learnathon-By-Geeky-Solutions_team-synergy&metric=code_smells&style=for-the-badge" alt="Code Smells" />
   </a>
 </p>
 
 <h4>
   <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy">Documentation</a>
   <span> · </span>
-  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/issues/">Report Bug</a>
+  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/issues">Report Bug</a>
   <span> · </span>
-  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/issues/">Request Feature</a>
+  <a href="https://github.com/Learnathon-By-Geeky-Solutions/team-synergy/issues">Request Feature</a>
 </h4>
+
 </div>
 
-<br />
+<br/>
 
 # SOHOJOGI - Home Service Solutions
 
